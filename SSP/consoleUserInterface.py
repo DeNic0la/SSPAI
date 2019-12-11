@@ -1,4 +1,6 @@
 # Imports Here
+import random
+from numpy.random.mtrand import random_integers
 from pip._vendor.distlib.compat import raw_input
 
 #Import my Own Files
@@ -33,7 +35,10 @@ def getUserPick():
 
 while playing:
     userPick = getUserPick()
-    compPick = "Schere"
+
+    toChose = ['Schere', 'Stein', 'Papier']
+    for makeCompPick in random.sample(toChose, len(toChose)):
+        compPick = makeCompPick
     print("Der Computer hat sich für " + compPick + " Entschieden \n")
     win = calcWin.calcWin(userPick, compPick)
     if win == "same":
@@ -46,12 +51,12 @@ while playing:
         compWins += 1
 
     playAgain = raw_input("Wollen sie Nochmals spielen ? Y/N\n")
-    if playAgain.lower() == 'y':
-        playing = True
+    if playAgain.lower() == 'n':
+        playing = False
     elif playAgain == 'S':
         playing = True
         print("Du hast " + str(userWins) + " Mal Gewonnen und "+ str(compWins) + " Mal Verloren")
     else:
-        playing = False
+        playing = True
 
 print("Das Spiel wird Abgebrochen\nDu hast " + str(userWins) + "Mal Gewonnen und "+ str(compWins) + "Mal Verloren")
