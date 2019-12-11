@@ -1,6 +1,5 @@
 # Imports Here
 import random
-from numpy.random.mtrand import random_integers
 from pip._vendor.distlib.compat import raw_input
 
 #Import my Own Files
