@@ -1,5 +1,5 @@
 # Imports Here
-import random
+import randomCompPick
 from pip._vendor.distlib.compat import raw_input
 
 #Import my Own Files
@@ -34,10 +34,8 @@ def getUserPick():
 
 while playing:
     userPick = getUserPick()
+    compPick = randomCompPick.getCompPick()
 
-    toChose = ['Schere', 'Stein', 'Papier']
-    for makeCompPick in random.sample(toChose, len(toChose)):
-        compPick = makeCompPick
     print("Der Computer hat sich für " + compPick + " Entschieden \n")
     win = calcWin.calcWin(userPick, compPick)
     if win == "same":
