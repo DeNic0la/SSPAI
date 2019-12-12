@@ -1,4 +1,6 @@
 import tkinter as tk
+
+import loginUI
 import mainLogic as mL
 #Imports Form mainLogic
 
@@ -22,6 +24,9 @@ mainWin.title("TSSPAITWADYAIAY")
 #Titel des Guis wird Erstellt
 tk.Label(mainWin, text="Willkommen bei SSPAI", font=("Rubik", 50)).pack()
 tk.Label(mainWin, text="Wählen sie zwischen Schere, Stein und Papier aus.", font=("Rubik", 20)).pack()
+
+#Ruf Das Login UI auf
+loginUI.doLogin()
 
 
 #Diese Funktion Ruft die Main Logic auf und nimmt ihre Werte entgegen un packt diese Anschliessend in Variabeln
