@@ -1,12 +1,19 @@
 from pip._vendor.distlib.compat import raw_input
 
 import loginLogic
-from mainLogic import stats
 
+import mainLogic as mL
 
 def doLogin():
-    username = raw_input("Geben sie Ihren Benutzernamen ein falls sie ohne Benutzernamen fortfahren möchten geben sie Y ein\n")
-    loginLogic.login(username)
-    win = stats['userWins']
-    lose = stats['compWins']
-    print("Ihr Benutzer hat bereits "+str(win)+" mal Gewonnen und "+str(lose)+" mal Verloren")
+
+    username = raw_input("Geben sie Ihren Benutzernamen ein.\n")
+    mL.user = username
+    loginLogic.login()
+    win = mL.stats['userWins']
+    lose = mL.stats['compWins']
+    if win == 0 and lose == 0:
+        print("Der Benutzer den du Angegeben hast Existiert noch nicht, es wurden keine Statistiken geladen.")
+    else:
+        print("Ihr Benutzer hat bereits "+str(win)+" mal Gewonnen und "+str(lose)+" mal Verloren")
+
+
