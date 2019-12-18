@@ -11,10 +11,12 @@ global user
 stats = dict()
 stats['compWins'] = 0
 stats['userWins'] = 0
+stats['same'] = 0
+stats['GamesPlayedTotal'] = 0
 global PlayingStreak
 global arrayAI
 arrayAI = []
-for cur in range(23):
+for cur in range(24):
     arrayAI.append("X")
 PlayingStreak = 0
 
@@ -29,6 +31,7 @@ def userInputFromGUI(userInput): #Diese Funktion nimmt de User Input entgegen
     import calcWin
     #Die Playingstreak wird erhöht (oder auf 1 Gesetzt für das ERste Spiel)
     PlayingStreak += 1
+    stats['GamesPlayedTotal'] += 1
     #über diese Funktionen wird der Spielzug des Computers Generiert
     #No Need to call getInputAI cause its already been called last time and the Data There is Now Correct
     compPick = rPick.getCompPick()
@@ -45,7 +48,7 @@ def userInputFromGUI(userInput): #Diese Funktion nimmt de User Input entgegen
     # Hier werden die Stats (Spielstand) aktualisierts
     #TODO Confirm it is Working
     stats = sS.setStats(winner, stats, userInput)
-    sS.getInputAI(winner, userInput)
+    sS.setInputAI(winner, userInput)
 
     #Hier werden die Spielstände in das RückgabeArray gepackt
     toReturn['userWins'] = stats['userWins']

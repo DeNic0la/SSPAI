@@ -1,5 +1,6 @@
 import tkinter as tk
 
+import loginGUI
 import loginUI
 import mainLogic as mL
 
@@ -18,6 +19,10 @@ font9 = "-family Rubik -size 9 -weight normal -slant roman "  \
             "-underline 0 -overstrike 0"
 
 
+#Ruf Das Login GUI auf
+loginGUI.printLogin()
+
+global mainWin
 mainWin = tk.Tk()
 mainWin.geometry("1100x687+371+169")
 mainWin.title("TSSPAITWADYAIAY")
@@ -25,8 +30,6 @@ mainWin.title("TSSPAITWADYAIAY")
 tk.Label(mainWin, text="Willkommen bei SSPAI", font=("Rubik", 50)).pack()
 tk.Label(mainWin, text="Wählen sie zwischen Schere, Stein und Papier aus.", font=("Rubik", 20)).pack()
 
-#Ruf Das Login UI auf
-loginUI.doLogin()
 
 
 #Diese Funktion Ruft die Main Logic auf und nimmt ihre Werte entgegen un packt diese Anschliessend in Variabeln
@@ -124,3 +127,5 @@ BtnPapier.configure(pady="0")
 
 
 mainWin.mainloop()
+
+

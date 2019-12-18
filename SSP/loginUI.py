@@ -7,8 +7,8 @@ import mainLogic as mL
 def doLogin():
 
     username = raw_input("Geben sie Ihren Benutzernamen ein.\n")
-    mL.user = username
-    loginLogic.login()
+    #mL.user = username
+    loginLogic.login(username)
     win = mL.stats['userWins']
     lose = mL.stats['compWins']
     if win == 0 and lose == 0:

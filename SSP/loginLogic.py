@@ -8,7 +8,8 @@ def equals(self, other):
 
 
 #This Function sereches the CSV file for an entered Username if one is Found it will enter the UserWin and Comp win into the mainLogic Global stats
-def login():
+def login(username):
+    mL.user = username
     opendata = open('stats/users.csv')
     inhalt = opendata.read()
     tabbelle = []
@@ -26,7 +27,10 @@ def login():
                 mL.stats['userWins'] += 1
             elif equals(tabbelle[cur][1], "comp"):
                 mL.stats['compWins'] += 1
-            print(mL.stats)
-            print(tabbelle[cur][0])
+            elif equals(tabbelle[cur][1], "same"):
+                mL.stats['same'] += 1
+            mL.stats['GamesPlayedTotal'] += 1
+            #print(mL.stats)
+            #print(tabbelle[cur][0])
     opendata.close()
 
