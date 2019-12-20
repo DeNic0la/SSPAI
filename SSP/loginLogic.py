@@ -32,5 +32,14 @@ def login(username):
             mL.stats['GamesPlayedTotal'] += 1
             #print(mL.stats)
             #print(tabbelle[cur][0])
-    opendata.close()
 
+
+
+
+
+a = [1,2]
+b = a
+del a[:]
+
+print(a)
+print(b)

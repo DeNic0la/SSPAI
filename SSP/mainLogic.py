@@ -1,5 +1,6 @@
 from tkinter import ttk
 import setStats as sS
+import aiLogic as aL
 
 
 
@@ -35,6 +36,8 @@ def userInputFromGUI(userInput): #Diese Funktion nimmt de User Input entgegen
     #über diese Funktionen wird der Spielzug des Computers Generiert
     #No Need to call getInputAI cause its already been called last time and the Data There is Now Correct
     compPick = rPick.getCompPick()
+    if PlayingStreak >= 11:
+        aL.getAIPick()
 
     #Hier wird überprüft wer der Gewinner ist
     winner = calcWin.calcWin(userInput, compPick)
