@@ -1,4 +1,4 @@
-Nicola;10;10;Schere;same;Papier;compWin;Stein;userWin;Papier;compWin;Stein;same;Schere;same;Stein;same;Papier;compWin;Stein;same;Schere;compWin;Stein
+Username;NumberOfPlayedGames;PlayingStreak;userPick;result;userPick1;result1;userPick2;result2;userPick3;result3;userPick4;result4;userPick5;result5;userPick6;result6;userPick7;result7;userPick8;result8;userPick9;result9;nextUserPick
 Nicola;11;11;Stein;compWin;Schere;same;Papier;compWin;Stein;userWin;Papier;compWin;Stein;same;Schere;same;Stein;same;Papier;compWin;Stein;same;Papier
 Nicola;12;12;Papier;userWin;Stein;compWin;Schere;same;Papier;compWin;Stein;userWin;Papier;compWin;Stein;same;Schere;same;Stein;same;Papier;compWin;Schere
 Nicola;13;13;Schere;compWin;Papier;userWin;Stein;compWin;Schere;same;Papier;compWin;Stein;userWin;Papier;compWin;Stein;same;Schere;same;Stein;same;Stein
