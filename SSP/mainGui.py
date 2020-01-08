@@ -49,20 +49,23 @@ def drawCompPick(computerPick):
     Notify.configure(font=("Rubik", 10))
     Notify.configure(relief="flat")
     Notify.configure(anchor='center')
-    Notify.configure(text="Der Computer hat sich für " + computerPick + " Entschieden")
+    Notify.configure(text="Der Computer hat sich für " + str(computerPick) + " Entschieden")
 
 
 def drawStats(winner):
     if winner == "same":
         winMessage = "Es steht Unentschieden"
+        messageColor = "#d9d9d9"
     elif winner == "userWin":
         winMessage = "Du hast Gewonnen"
+        messageColor = "#39ff14"
     else:
         winMessage = "Du hast Verloren"
+        messageColor = "#880000"
 
     Notify = ttk.Label()
     Notify.place(relx=0.318, rely=0.784, height=39, width=408)
-    Notify.configure(background="#d9d9d9")
+    Notify.configure(background=messageColor)
     Notify.configure(foreground="#000000")
     Notify.configure(font=("Rubik", 10))
     Notify.configure(relief="flat")

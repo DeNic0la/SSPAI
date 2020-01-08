@@ -21,7 +21,6 @@ def getAIPick():
          "result2", "userPick3", "result3", "userPick4", "result4", "userPick5", "result5", "userPick6", "result6",
          "userPick7", "result7", "userPick8", "result8", "userPick9", "result9", "nextUserPick"]]
     toPredict = "nextUserPick"
-    inputFromCurrent = []
 
     for tmp2 in range(len(mL.arrayAI)):
         print(mL.arrayAI[tmp2])
@@ -120,7 +119,7 @@ def getAIPick():
     tresult9.append(mL.arrayAI[22])
     result9 = le.fit_transform(tresult9)
 
-    nextUserPick = le.fit_transform(list(data["nextUserPick"]))
+    # nextUserPick = le.fit_transform(list(data["nextUserPick"]))
 
     # inputForModel = np.array(zip(Username, NumberOfPlayedGames, PlayingStreak, userPick, result, userPick1, result1,
     #                             userPick2, result2, userPick3, result3, userPick4, result4, userPick5, result5, userPick6,
@@ -130,65 +129,63 @@ def getAIPick():
                   "userPick6", "result6", "userPick7", "result7", "userPick8", "result8", "userPick9", "result9"]
 
     np.array(data.drop([toPredict], 1))
+    ###LAtest DONE ++++++ Added [] @#@#@#@#@#@#@#
 
-    nextPick = np.array(nextUserPick)
+    nextPick = np.array(result9)
+    useForLen = len(nextPick) - 1
+    print("Gugurugu")
+    # print(nextPick)
 
     # Input from Current
-    inputFromCurrent.append(np.array(Username[len(Username) - 1] ))
-    inputFromCurrent.append(np.array(NumberOfPlayedGames[len(NumberOfPlayedGames) - 1] ))
-    inputFromCurrent.append(np.array(PlayingStreak[len(PlayingStreak) - 1] ))
-    inputFromCurrent.append(np.array(userPick[len(userPick) - 1] ))
-    inputFromCurrent.append(np.array(result[len(result) - 1] ))
-    inputFromCurrent.append(np.array(userPick1[len(userPick1) - 1] ))
-    inputFromCurrent.append(np.array(result1[len(result1) - 1] ))
-    inputFromCurrent.append(np.array(userPick2[len(userPick2) - 1] ))
-    inputFromCurrent.append(np.array(result2[len(result2) - 1] ))
-    inputFromCurrent.append(np.array(userPick3[len(userPick3) - 1] ))
-    inputFromCurrent.append(np.array(result3[len(result3) - 1] ))
-    inputFromCurrent.append(np.array(userPick4[len(userPick4) - 1] ))
-    inputFromCurrent.append(np.array(result4[len(result4) - 1] ))
-    inputFromCurrent.append(np.array(userPick5[len(userPick5) - 1] ))
-    inputFromCurrent.append(np.array(result5[len(result5) - 1] ))
-    inputFromCurrent.append(np.array(userPick6[len(userPick6) - 1] ))
-    inputFromCurrent.append(np.array(result6[len(result6) - 1] ))
-    inputFromCurrent.append(np.array(userPick7[len(userPick7) - 1] ))
-    inputFromCurrent.append(np.array(result7[len(result7) - 1] ))
-    inputFromCurrent.append(np.array(userPick8[len(userPick8) - 1] ))
-    inputFromCurrent.append(np.array(result8[len(result8) - 1] ))
-    inputFromCurrent.append(np.array(userPick9[len(userPick9) - 1] ))
-    inputFromCurrent.append(np.array(result9[len(result9) - 1] ))
+    inputFromCurrent = list(zip([np.array(Username[len(Username) - 1]),
+                                 np.array(NumberOfPlayedGames[len(NumberOfPlayedGames) - 1]),
+                                 np.array(PlayingStreak[len(PlayingStreak) - 1]), np.array(userPick[len(userPick) - 1]),
+                                 np.array(result[len(result) - 1]), np.array(userPick1[len(userPick1) - 1]),
+                                 np.array(result1[len(result1) - 1]), np.array(userPick2[len(userPick2) - 1]),
+                                 np.array(result2[len(result2) - 1]), np.array(userPick3[len(userPick3) - 1]),
+                                 np.array(result3[len(result3) - 1]), np.array(userPick4[len(userPick4) - 1]),
+                                 np.array(result4[len(result4) - 1]), np.array(userPick5[len(userPick5) - 1]),
+                                 np.array(result5[len(result5) - 1]), np.array(userPick6[len(userPick6) - 1]),
+                                 np.array(result6[len(result6) - 1]), np.array(userPick7[len(userPick7) - 1]),
+                                 np.array(result7[len(result7) - 1]), np.array(userPick8[len(userPick8) - 1]),
+                                 np.array(result8[len(result8) - 1]), np.array(userPick9[len(userPick9) - 1]),
+                                 np.array(result9[len(result9) - 1])]))
 
+    print("Now Printing the Values for Current match in AI accaptable Format")
     for tmp3 in range(len(inputFromCurrent)):
         print(inputFromCurrent[tmp3])
 
+    # We First But the Data from  The Past and the Data to calculate the Predict for together an then but it in AI Accaptable Format or how normal Humans say: Numbers
+    # Now we need this very last part removed from the Array and put into its own Array
 
     inputForModel = []
-    inputForModel.append(np.array(Username.drop([len(Username)], 1)))
-    inputForModel.append(np.array(NumberOfPlayedGames.drop([len(NumberOfPlayedGames)], 1)))
-    inputForModel.append(np.array(PlayingStreak.drop([len(PlayingStreak)], 1)))
-    inputForModel.append(np.array(userPick.drop([len(userPick)], 1)))
-    inputForModel.append(np.array(result.drop([len(result)], 1)))
-    inputForModel.append(np.array(userPick1.drop([len(userPick1)], 1)))
-    inputForModel.append(np.array(result1.drop([len(result1)], 1)))
-    inputForModel.append(np.array(userPick2.drop([len(userPick2)], 1)))
-    inputForModel.append(np.array(result2.drop([len(result2)], 1)))
-    inputForModel.append(np.array(userPick3.drop([len(userPick3)], 1)))
-    inputForModel.append(np.array(result3.drop([len(result3)], 1)))
-    inputForModel.append(np.array(userPick4.drop([len(userPick4)], 1)))
-    inputForModel.append(np.array(result4.drop([len(result4)], 1)))
-    inputForModel.append(np.array(userPick5.drop([len(userPick5)], 1)))
-    inputForModel.append(np.array(result5.drop([len(result5)], 1)))
-    inputForModel.append(np.array(userPick6.drop([len(userPick6)], 1)))
-    inputForModel.append(np.array(result6.drop([len(result6)], 1)))
-    inputForModel.append(np.array(userPick7.drop([len(userPick7)], 1)))
-    inputForModel.append(np.array(result7.drop([len(result7)], 1)))
-    inputForModel.append(np.array(userPick8.drop([len(userPick8)], 1)))
-    inputForModel.append(np.array(result8.drop([len(result8)], 1)))
-    inputForModel.append(np.array(userPick9.drop([len(userPick9)], 1)))
-    inputForModel.append(np.array(result9.drop([len(result9)], 1)))
+
+    inputForModel.append(np.array(Username[:-1]))
+    inputForModel.append(np.array(NumberOfPlayedGames[:-1]))
+    inputForModel.append(np.array(PlayingStreak[:-1]))
+    inputForModel.append(np.array(userPick[:-1]))
+    inputForModel.append(np.array(result[:-1]))
+    inputForModel.append(np.array(userPick1[:-1]))
+    inputForModel.append(np.array(result1[:-1]))
+    inputForModel.append(np.array(userPick2[:-1]))
+    inputForModel.append(np.array(result2[:-1]))
+    inputForModel.append(np.array(userPick3[:-1]))
+    inputForModel.append(np.array(result3[:-1]))
+    inputForModel.append(np.array(userPick4[:-1]))
+    inputForModel.append(np.array(result4[:-1]))
+    inputForModel.append(np.array(userPick5[:-1]))
+    inputForModel.append(np.array(result5[:-1]))
+    inputForModel.append(np.array(userPick6[:-1]))
+    inputForModel.append(np.array(result6[:-1]))
+    inputForModel.append(np.array(userPick7[:-1]))
+    inputForModel.append(np.array(result7[:-1]))
+    inputForModel.append(np.array(userPick8[:-1]))
+    inputForModel.append(np.array(result8[:-1]))
+    inputForModel.append(np.array(userPick9[:-1]))
+    inputForModel.append(np.array(result9[:-1]))
 
     reShapedArray = []
-    for cou in range(len(nextPick)):
+    for cou in range(useForLen):
         tmpArray = []
         tmpArray.append(Username[cou])
         tmpArray.append(NumberOfPlayedGames[cou])
@@ -233,8 +230,10 @@ def getAIPick():
     model = keras.Sequential()
     model.add(keras.layers.Dense(23, input_dim=23, init='lecun_uniform', activation='tanh'))
     model.add(keras.layers.Dense(23, activation="relu"))
-    model.add(keras.layers.Dense(1, activation="sigmoid"))
+    model.add(keras.layers.Dense(3, activation="softmax"))
 
+    for layer in model.layers:
+        print(layer.output_shape)
     model.compile(optimizer="adam", loss="binary_crossentropy", metrics=["accuracy"])
 
     # Bring Data in a Format witch goes with model.fit
@@ -257,6 +256,10 @@ def getAIPick():
     # HERE
     # HERE
 
+    nextPick = []
+    nUP = list(data["nextUserPick"])
+    for A in range(len(list(data["nextUserPick"]))):
+        nextPick.append(TextToArr(nUP[A]))
     # Format: Simulating input data, Result , epochs
     print("INPUTFORMODEL")
     print(np.array(inputForModel))
@@ -266,14 +269,79 @@ def getAIPick():
     print(np.array(nextPick))
 
     print("Lenge toPredict")
-    print(len(np.array(nextPick)))
+    # print(len(np.array(nextPick)))
     print("Länge von Reshaped und InputForModel")
     print(len(np.array(reShapedArray)))
     print(len(np.array(inputForModel)))
     pass
-    model.fit(np.array(reShapedArray), np.array(nextPick), epochs=3000, validation_split=0.1)
+    model.fit(np.array(reShapedArray), np.array(nextPick), epochs=300, validation_split=0.1)
+    print(inputFromCurrent)
+    predictInput = []  # np.array()
+    for i in range(len(inputFromCurrent)):
+        print(inputFromCurrent[i][0])
+        predictInput.append(int(inputFromCurrent[i][0]))
+    addArray = np.array([predictInput])
+    print(predictInput)
+    print(np.transpose(predictInput))
+    print("The ADD ARRAY:")
+    print(addArray)
+    print(np.transpose(addArray))
+    AiPredict = model.predict(addArray)
+    print(AiPredict)
+    print(np.argmax(AiPredict))
+
+    ### np.argmax
+    print("AI Predicts:")
+    print(str(AiPredict))
+    # test2 = AiPredict
+    # AiPredict += 0.5
+    # print(int(AiPredict))
+    # AiPredictText = le.inverse_transform(np.array([int(AiPredict)]))
+    # print(AiPredictText)
+    # return AiPredictText
 
     # Input Data
     # prediction = model.predict([])
     # print(prediction)
     # print(model.predict([10, 11]))
+    if ArgMaxPredictToText(np.argmax(AiPredict)) == "Schere":
+        return "Stein"
+    if ArgMaxPredictToText(np.argmax(AiPredict)) == "Stein":
+        return "Papier"
+    if ArgMaxPredictToText(np.argmax(AiPredict)) == "Papier":
+        return "Schere"
+
+
+def TextToArr(inputText):
+    if inputText == "Schere":
+        return [1, 0, 0]
+    elif inputText == "Stein":
+        return [0, 1, 0]
+    elif inputText == "Papier":
+        return [0, 0, 1]
+    else:
+        print("You Vegan just made a Big Mistake...")
+        return "LMAO"
+
+
+def ArrToText(inputArr):
+    if inputArr == [1, 0, 0]:
+        return "Schere"
+    if inputArr == [0, 1, 0]:
+        return "Stein"
+    if inputArr == [0, 0, 1]:
+        return "Papier"
+    else:
+        print(
+            "You Just gave us an Input with more than one Activatet Play This is Not Possible. I am Just Gone Print some Errors Lol ")
+        print("Just kidding i am Not, You suck LOL")
+        return "LMAO"
+
+
+def ArgMaxPredictToText(inp):
+    if inp == 0:
+        return "Schere"
+    if inp == 1:
+        return "Stein"
+    if inp == 2:
+        return "Papier"
