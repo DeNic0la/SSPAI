@@ -288,6 +288,13 @@ def getAIPick():
     print(np.transpose(addArray))
     AiPredict = model.predict(addArray)
     print(AiPredict)
+    print("\nSchere Warscheinlichkeit:")
+    print(((AiPredict[0][0]) * 100))
+    print("\nStein Warscheinlichkeit:")
+    print(((AiPredict[0][1]) * 100))
+    print("\nPapier Warscheinlichkeit:")
+    print(((AiPredict[0][2]) * 100))
+    print("\n")
     print(np.argmax(AiPredict))
 
     ### np.argmax
@@ -304,12 +311,8 @@ def getAIPick():
     # prediction = model.predict([])
     # print(prediction)
     # print(model.predict([10, 11]))
-    if ArgMaxPredictToText(np.argmax(AiPredict)) == "Schere":
-        return "Stein"
-    if ArgMaxPredictToText(np.argmax(AiPredict)) == "Stein":
-        return "Papier"
-    if ArgMaxPredictToText(np.argmax(AiPredict)) == "Papier":
-        return "Schere"
+
+    return smartPick(AiPredict[0])
 
 
 def TextToArr(inputText):
@@ -333,7 +336,8 @@ def ArrToText(inputArr):
         return "Papier"
     else:
         print(
-            "You Just gave us an Input with more than one Activatet Play This is Not Possible. I am Just Gone Print some Errors Lol ")
+            "You Just gave us an Input with more than one Activatet Play This is Not Possible. I am Just Gone Print "
+            "some Errors Lol ")
         print("Just kidding i am Not, You suck LOL")
         return "LMAO"
 
@@ -345,3 +349,39 @@ def ArgMaxPredictToText(inp):
         return "Stein"
     if inp == 2:
         return "Papier"
+    print("Fehler bei ARG MAX TO TEXT !!!!")
+
+
+def smartPick(AiArray):
+    rec = np.argmax(AiArray)
+    if (AiArray[np.argmax(AiArray)] - AiArray[np.argmin(AiArray)]) >= 0.3:
+        if AiArray[3 - (np.argmax(AiArray) + np.argmin(AiArray))] < 0.3:
+            return ArgMaxPredictToText(isBeaten(rec))
+        elif AiArray[rec] >= 0.8:
+            return ArgMaxPredictToText(isBeaten(rec))
+
+    return ArgMaxPredictToText(Beats(np.argmin(AiArray)))
+
+
+def isBeaten(inp):
+    if inp == 0:
+        return 1
+    if inp == 1:
+        return 2
+    if inp == 2:
+        return 0
+    else:
+        print("Ein Fehler ist Aufgetreten bei isBeaten")
+        return "GUGUS"
+
+
+def Beats(inp):
+    if inp == 0:
+        return 2
+    if inp == 1:
+        return 0
+    if inp == 2:
+        return 1
+    else:
+        print("Ein Fehler ist Aufgetreten bei Beats")
+        return "GUGUS V2"
